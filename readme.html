@@ -1,23 +1,32 @@
-<!--
-    File: readme.html
-    Copyright (c) 2018-2021 Splunk Inc.
-    
-    Licensed under Apache 2.0 (https://www.apache.org/licenses/LICENSE-2.0.txt)
--->
+<html>
+  <head></head>
+  <body>
+    <h2>py42</h2>
+      <p>This app is built using <a href="https://github.com/code42/py42">py42</a>, the official Code42 python SDK.</p>
 
-<h2>Playbook Backward Compatibility</h2>
-<p>
-  <ul>
-    <li>The below-mentioned actions have been added. Hence, it is requested to the end-user to please update their existing playbooks by inserting | modifying | deleting the corresponding action blocks for this action on the earlier versions of the app.</li>
-    <ul>
-      <li>get organization info</li>
-      <li>add departing employee</li>
-      <li>remove departing employee</li>
-    </ul>
-    <li>The existing action parameters have been modified in the actions given below. Hence, it is requested to the end-user to please update their existing playbooks by re-inserting the corresponding action blocks or by providing appropriate values to these action parameters to ensure the correct functioning of the playbooks created on the earlier versions of the app.</li>
-		<ul>
-			<li>run query - The new "max_results" parameter has been added.</li>
-			<li>hunt file - The new "max_results" parameter has been added.</li>
-		</ul>
-  </ul>
-</p>
+    <h2>Objective</h2>
+      <p>This app implements various investigative actions on the Code42 Incydr platform. Additionally, this app
+      ingests alerts from Code42 to facilitate a timely response.</p>
+
+    <h2>How to Configure the App</h2>
+      <p>
+        Access the Asset Settings tab on the Asset Configuration page. Input the cloud instance, username, and password
+        to use to connect to Code42.
+      </p>
+    <p>
+      If using the polling feature, you may set the Start Date and End Date for the initial ingest. Otherwise,
+      it ingests up to 30 days back. Ongoing queries will only get new alerts. Configure the polling interval in the
+      Ingest Settings tab. Additionally, you can configure which alert severities to poll for, such as HIGH, MEDIUM,
+      or LOW.
+    </p>
+
+    <h2>On Poll</h2>
+      <p>
+        The 'on poll' functionality first ingests the past 30 days of Code42 alerts (or uses the configured start and
+        end dates). Note that if you use the "poll now" feature, you are limited to the number of containers and
+        artifacts listed in the parameter fields. Adjust the polling interval in the ingest settings to determine how
+        frequent polling occurs. The app ingests individual alerts only once unless deleted and re-polled.
+      </p>
+
+  </body>
+</html>
