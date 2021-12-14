@@ -12,19 +12,19 @@
 # the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
 # either express or implied. See the License for the specific language governing permissions
 # and limitations under the License.
-import json
 import ipaddress
+import json
 from datetime import datetime
-from dateutil import parser
-import requests
-from bs4 import BeautifulSoup
-from code42_consts import *
 from sys import version_info as python_version
 
-# Phantom App imports
 import phantom.app as phantom
-from phantom.base_connector import BaseConnector
+import requests
+from bs4 import BeautifulSoup
+from dateutil import parser
 from phantom.action_result import ActionResult
+from phantom.base_connector import BaseConnector
+
+from code42_consts import *
 
 
 class RetVal(tuple):
@@ -94,8 +94,8 @@ class Code42Connector(BaseConnector):
         if response.status_code == 204:
             return RetVal(phantom.APP_SUCCESS, {})
 
-        return RetVal(action_result.set_status(phantom.APP_ERROR, "Status Code: {0}. Empty response and no information in the header".format(response.status_code)),
-                      None)
+        return RetVal(action_result.set_status(phantom.APP_ERROR, "Status Code: {0}. Empty response and no information in the header".format(
+            response.status_code)), None)
 
     def _process_html_response(self, response, action_result):
         """ This function is used to process html response.
@@ -242,7 +242,8 @@ class Code42Connector(BaseConnector):
             if parameter < 0:
                 return action_result.set_status(phantom.APP_ERROR, CODE42_ERR_INVALID_INTEGER_VALUE.format(msg="non-negative", param=key)), None
             if not allow_zero and parameter == 0:
-                return action_result.set_status(phantom.APP_ERROR, CODE42_ERR_INVALID_INTEGER_VALUE.format(msg="non-zero positive", param=key)), None
+                return action_result.set_status(phantom.APP_ERROR, CODE42_ERR_INVALID_INTEGER_VALUE.format(
+                    msg="non-zero positive", param=key)), None
 
         return phantom.APP_SUCCESS, parameter
 
@@ -1221,7 +1222,8 @@ class Code42Connector(BaseConnector):
         user_org_id = response_org_status.get('data', {}).get('orgId')
 
         # if user already in the given organization, it's return error
-        if (organization_id and user_org_id == int(organization_id)) or organization_id_from_name and user_org_id == int(organization_id_from_name):
+        if ((organization_id and user_org_id == int(organization_id)) or organization_id_from_name and user_org_id == int(
+                organization_id_from_name)):
             return action_result.set_status(phantom.APP_SUCCESS, status_message=CODE42_ORG_ALREADY_SET_MSG)
 
         request_data = {
@@ -2160,9 +2162,10 @@ class Code42Connector(BaseConnector):
 
 if __name__ == '__main__':
 
-    import sys
-    import pudb
     import argparse
+    import sys
+
+    import pudb
 
     pudb.set_trace()
 

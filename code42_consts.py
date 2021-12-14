@@ -109,7 +109,8 @@ CODE42_TEST_CONNECTIVITY_FAILED_MSG = 'Test connectivity failed'
 CODE42_TEST_CONNECTIVITY_PASSED_MSG = 'Test connectivity passed'
 CODE42_DEVICE_TOKEN_GENERATION_FAILED = 'Failed to generate DataKeyToken. See error message for details'
 CODE42_RESTORE_SESSION_CREATION_FAILED = 'Failed to create WebRestoreSession. See error message for details'
-CODE42_RESTORE_NO_PATHS_SUPPLIED = 'Either \"files\" or \"directories\" parameters must be supplied! Please fill at least one of these parameters and execute the action again'
+CODE42_RESTORE_NO_PATHS_SUPPLIED = 'Either \"files\" or \"directories\" parameters must be supplied! ' \
+    'Please fill at least one of these parameters and execute the action again'
 CODE42_FILE_EVENT_INVALID = "Please provide a valid 'file_event' parameter"
 CODE42_CONNECTION_FAILED = "Unable to connect to server"
 
